@@ -274,6 +274,7 @@
         <properties uuid="eb1fdd1c-c1d9-4ce6-8d5f-11f2d50de38c" value="0 0 0" name="lineColor"/>
       </figures>
     </diagram>
+    <diagram uuid="b97e1eea-a81d-48f0-83e9-5880e5a2ed90" name="ClassDiagram_1" type="class"/>
   </j_diagramHolder>
   <ownedMember xsi:type="uml:Class" uuid="f31fd8ce-9a56-4317-ae95-b54aec514c41" clientDependency="//@ownedMember.0/@interfaceRealization.0" name="ClientsLoader">
     <generalization j_deleted="1" uuid="ec6d3c78-d058-44e2-a563-1f00babcb5d8" general="//@ownedMember.5"/>

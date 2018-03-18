@@ -2,16 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>visitor</artifactId>
+        <groupId>omar.mebarki</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>omar.mebarki</groupId>
-    <artifactId>meetuppatterns</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>bridge</module>
-        <module>visitor</module>
-    </modules>
-    <packaging>pom</packaging>
+       <artifactId>visitor1</artifactId>
 
 
 </project>
