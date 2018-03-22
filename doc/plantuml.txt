@@ -1,0 +1,232 @@
+--------------------- Page 6 -------------------------
+@startuml
+
+title Cache - Class Diagram
+
+
+class ClientsCache {
+  -Map<ID,Client> cache
+  +void loadAll()
+  +Client get(ID id)
+}
+
+class ProductsCache {
+  -Map<ID,Product> cache
+  +void loadAll()
+  +Product get(ID id)
+}
+
+@enduml
+
+--------------------- Page 7 -------------------------
+@startuml
+
+title Cache - Class Diagram
+
+abstract class Cache<I,T>{
+    ~Map<I,T> cache
+    {abstract} +void loadAll()
+    +T get(I id)
+}
+
+class ClientsCache<ID,Client> {
+  +void loadAll()
+}
+
+class ProductsCache<ID,Product>  {
+  +void loadAll()
+}
+
+Cache <|-- ClientsCache
+Cache <|-- ProductsCache
+
+@enduml
+
+--------------------- Page 8 -------------------------
+@startuml
+
+title Cache - Class Diagram
+
+
+
+class Cache<I,T>{
+    -Map<I,T> cache
+    +void loadAll()
+    +T get(I id)
+}
+
+interface EntityLoader<I,T>{
+	+Map<I,T> loadAll()
+}
+
+class ClientsLoader<ID,Client> {
+  +void loadAll()
+}
+
+class ProductsLoader<ID,Product>  {
+  +void loadAll()
+}
+
+
+
+EntityLoader  <|--  ProductsLoader
+EntityLoader   <|-- ClientsLoader
+EntityLoader <--* Cache
+EntityLoader -[hidden]> Cache
+together {
+  interface EntityLoader
+  class Cache
+}
+@enduml
+
+--------------------- Page 11 -------------------------
+
+
+@startuml
+
+title File - Class Diagram
+
+
+
+class Printer{
+    +void print(File file)
+    +void print(SymLink sym)
+    +void print(HardLink hard)
+}
+
+class File{
+	-String mane
+	+String getName()
+}
+
+class SymLink {
+  -String path
+  +String getPath()
+}
+
+class HardLink {
+  -String path
+  -int refCounter
+  +String getPath()
+  +int getRefCounter()
+}
+
+
+
+File <|--  SymLink
+File   <|--  HardLink
+File <-- Printer
+File -[hidden]> Printer
+together {
+  class File
+  class Printer
+}
+@enduml
+
+--------------------- Page 14 -------------------------
+
+
+@startuml
+
+title File - Class Diagram
+
+
+
+class Printer{
+    +void print(File file)
+    +void print(SymLink sym)
+    +void print(HardLink hard)
+}
+
+class File{
+	-String mane
+	+String getName()
+	..
+	+ void print()
+}
+
+class SymLink {
+  -String path
+  +String getPath()
+  ..
+  + void print()
+}
+
+class HardLink {
+  -String path
+  -int refCounter
+  +String getPath()
+  +int getRefCounter()
+  ..
+  + void print()
+}
+
+
+
+File <|--  SymLink
+File   <|--  HardLink
+File <-- Printer
+File -[hidden]> Printer
+together {
+  class File
+  class Printer
+}
+@enduml
+
+--------------------- Page 16 -------------------------
+@startuml
+
+title File - Class Diagram
+
+interface FileSystemVisitor{
+	+void visit(File file)
+    +void visit(SymLink sym)
+    +void visit(HardLink hard)
+}
+
+class Printer{
+    +void visit(File file)
+    +void visit(SymLink sym)
+    +void visit(HardLink hard)
+}
+
+class File{
+	-String mane
+	+String getName()
+	..
+	+ void accept(FileSystemVisitor visitor)
+}
+
+class SymLink {
+  -String path
+  +String getPath()
+  ..
+  + void accept(FileSystemVisitor visitor)
+}
+
+class HardLink {
+  -String path
+  -int refCounter
+  +String getPath()
+  +int getRefCounter()
+  ..
+  + void accept(FileSystemVisitor visitor)
+}
+
+class MainPrinter3
+    note top: Client
+
+FileSystemVisitor <|--  Printer
+File <|--  SymLink
+File   <|--  HardLink
+FileSystemVisitor <-- MainPrinter3
+File <-- MainPrinter3
+
+FileSystemVisitor-[hidden]>MainPrinter3
+MainPrinter3-[hidden]>File
+together {
+    interface FileSystemVisitor
+    class MainPrinter3
+  class File
+}
+@enduml
