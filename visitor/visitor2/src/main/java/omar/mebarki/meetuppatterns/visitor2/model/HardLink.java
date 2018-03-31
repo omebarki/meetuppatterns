@@ -6,8 +6,8 @@ public class HardLink extends File {
     private String path;
     private int refCounter;
 
-    public HardLink(String name, String path, int refCounter, Printer printer) {
-        super(name, printer);
+    public HardLink(String name, String path, int refCounter) {
+        super(name);
         this.path = path;
         this.refCounter = refCounter;
     }
@@ -21,7 +21,7 @@ public class HardLink extends File {
     }
 
     @Override
-    public void print() {
+    public void print(Printer printer) {
         printer.print(this);
     }
 }

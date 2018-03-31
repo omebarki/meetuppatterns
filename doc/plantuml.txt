@@ -142,14 +142,14 @@ class File{
 	-String mane
 	+String getName()
 	..
-	+ void print()
+	+ void print(Printer p)
 }
 
 class SymLink {
   -String path
   +String getPath()
   ..
-  + void print()
+  + void print(Printer p)
 }
 
 class HardLink {
@@ -158,19 +158,30 @@ class HardLink {
   +String getPath()
   +int getRefCounter()
   ..
-  + void print()
+  + void print(Printer p)
 }
 
 
 
 File <|--  SymLink
 File   <|--  HardLink
-File <-- Printer
+File <..> Printer
 File -[hidden]> Printer
 together {
   class File
   class Printer
 }
+@enduml
+
+--------------------- Page 15 -------------------------
+@startuml
+
+title "Messages - Sequence Diagram"
+
+
+MainPrinter2 -> SymLink : print(printer)
+SymLink -> Printer : print(this)
+
 @enduml
 
 --------------------- Page 16 -------------------------
